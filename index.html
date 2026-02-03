@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Week 2026</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff0f3;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .main-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        h1 { color: #ff4d6d; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ffb3c1;
+        }
+
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn:hover { background-color: #c9184a; }
+
+        /* Hidden "New Page" Section */
+        #content-page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .celebration-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            background-color: #333;
+            margin-top: 20px;
+        }
+        
+        .romantic-text {
+            font-size: 1.5rem;
+            color: #c9184a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="list-page" class="main-container">
+        <h1>❤️ Valentine's Week ❤️</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Day Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                </tbody>
+        </table>
+    </div>
+
+    <div id="content-page" class="main-container">
+        <h2 id="day-title"></h2>
+        <img id="day-img" src="" alt="Celebration Image" class="celebration-img">
+        <p id="day-text" class="romantic-text"></p>
+        <button class="btn back-btn" onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        const days = [
+            { date: "Feb 7", name: "Rose Day", img: "rose day 1.jpg", text: "A beautiful rose for someone special!" },
+            { date: "Feb 8", name: "Propose Day", img: "https://images.unsplash.com/photo-1516589174184-c68526572af0?w=500", text: "Confessing your feelings or 'popping the question' 💍" },
+            { date: "Feb 9", name: "Chocolate Day", img: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=500", text: "Sharing sweets with someone special 🍫" },
+            { date: "Feb 10", name: "Teddy Day", img: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=500", text: "Gifting a soft toy for comfort and care 🧸" },
+            { date: "Feb 11", name: "Promise Day", img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500", text: "You are my only loved one ❤️" },
+            { date: "Feb 12", name: "Hug Day", img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500", text: "Sharing a warm embrace 🤗" },
+            { date: "Feb 13", name: "Kiss Day", img: "https://images.unsplash.com/photo-1516589091380-5d8183de2744?w=500", text: "A symbol of intimacy and love 💋" },
+            { date: "Feb 14", name: "Valentine’s Day", img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800", text: "Happy Valentine’s Day! The grand finale of love! 💖" }
+        ];
+
+        const tbody = document.getElementById('table-body');
+
+        // Populate Table
+        days.forEach((day, index) => {
+            let row = `<tr>
+                <td>${day.date}</td>
+                <td>${day.name}</td>
+                <td><button class="btn" onclick="showDay(${index})">Open ${day.name}</button></td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+
+        function showDay(index) {
+            const data = days[index];
+            document.getElementById('day-title').innerText = data.name;
+            document.getElementById('day-img').src = data.img;
+            document.getElementById('day-text').innerText = data.text;
+
+            document.getElementById('list-page').style.display = 'none';
+            document.getElementById('content-page').style.display = 'flex';
+        }
+
+        function goBack() {
+            document.getElementById('list-page').style.display = 'block';
+            document.getElementById('content-page').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
